@@ -1,7 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 // console.log(galleryItems);
-// import * as basicLightbox from 'basiclightbox';
 
 const listGallery = document.querySelector(".gallery");
 
@@ -14,7 +13,6 @@ listImage.map(item => {
     const listGalleryElementLink = document.createElement('a');
     listGalleryElementLink.className = "gallery__link";
     listGalleryElementLink.href = `${item.original}`;
-    // listGalleryElementLink.target = "_blank";
     listGalleryElement.append(listGalleryElementLink);
 
     const listGalleryElementImg = document.createElement('img');
@@ -29,6 +27,7 @@ const arrGalleryItem = Array.from(listGallery.children);
 
 arrGalleryItem.forEach((el) => {
     el.addEventListener("click", (event) => {
+        event.preventDefault();
         const instance = basicLightbox.create(`
     <img src="${event.target.dataset.source}" width="800" height="600">
 `)
